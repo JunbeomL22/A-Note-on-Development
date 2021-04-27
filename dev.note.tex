@@ -1,103 +1,67 @@
-\documentclass[onefignum,onetabnum]{siamart190516} 
-\usepackage{lipsum}
-\usepackage{amsfonts}
-\usepackage{graphicx}
-\usepackage{epstopdf}
-\usepackage{algorithmic}
-\usepackage{mathrsfs}
+\documentclass[a4paper, 11pt]{article}              % for a regular run         
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}     
+\DeclareFontShape{OT1}{cmr}{bx}{sc}{<-> Combs10}{}   
+%\usepackage{libertine}      
+\usepackage[oldstylenums]{kpfonts}     
+\usepackage{amsmath, amssymb, amsthm} 
+\usepackage{eufrak}
+\usepackage{hhline}
+\usepackage{kotex}
+\usepackage{yfonts}
+\usepackage{soul}
+\usepackage[titletoc]{appendix}
 \usepackage{microtype}
-\usepackage{amsfonts}
-\usepackage{graphicx}
-\usepackage{epstopdf}
-\usepackage{amsmath, amssymb}
-\usepackage{eufrak} 
-\usepackage{yfonts}  
-\usepackage[title]{appendix} 
-\usepackage{mathtools}   
-\usepackage{cleveref}  
+\usepackage{mathtools}
+\usepackage[edges]{forest}
+\usepackage{cleveref}\crefname{equation}{}{}
 \usepackage{enumerate} 
-\usepackage{bm}  
-\usepackage{soul}  
+\usepackage{bm} 
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
 \usepackage[normalem]{ulem}
-\usepackage{stmaryrd}
-\usepackage{tikz}          
-\usepackage[]{geometry} 
-\numberwithin{equation}{section}
-\geometry{bottom = 1.5 in}   
+\usepackage[]{geometry}
+\usepackage{authblk}
+\usepackage{xcolor}
+%\usepackage[euro]{textcomp}
+\numberwithin{equation}{section}  
+\geometry{textwidth=16.5cm, bottom = 3cm, top = 3cm}  
+%\usepackage[doublespacing]{setspace} %onehalfspacing
+%\usepackage{lineno}
+%\linenumbers
 \usepackage{dsfont}
-\usepackage{graphicx}   
-\usepackage{subcaption}   
-
- 
-
-\ifpdf
-  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
-\else
-  \DeclareGraphicsExtensions{.eps}
-\fi
-
-% Prevent itemized lists from running into the left margin inside theorems and proofs
-\usepackage{enumitem}
-\setlist[enumerate]{leftmargin=.5in} 
-\setlist[itemize]{leftmargin=.5in}
-
-% Add a serial/Oxford comma by default.
-
-\newcommand{\creflastconjunction}{, and~}
-
-% Used for creating new theorem and remark environments
-\newsiamremark{remark}{Remark}
-\newsiamremark{example}{Example}
-\newsiamremark{hypothesis}{Hypothesis}
-\crefname{hypothesis}{Hypothesis}{Hypotheses} 
-\newsiamthm{claim}{Claim}
-\newsiamthm{assumption}{Assumption}
+\usepackage{graphicx, epstopdf}
+%\epstopdfsetup{outdoor=./} 
+\usepackage{subcaption}
+\usepackage[]{apacite} 
+\usepackage[round, sort, compress, authoryear]{natbib} 
+\bibliographystyle{apacite}    
+\theoremstyle{plain}
 \newcommand{\scrE}{\mathscr{E}}
-\newcommand{\scrB}{\mathscr{B}}
-\DeclareMathOperator*{\dom}{dom}
-\newcommand{\csol}{\widehat{\delta}(\vt^A, v^B)}
-\newcommand{\jt}{\widetilde{\theta}}
-\newcommand{\qf}{\mathbf{q}}
-\newcommand{\Af}{\mathbf{A}}
-\newcommand{\Aft}{\tilde{\mathbf{A}}}
-\newcommand{\Bft}{\tilde{\mathbf{B}}}
-\newcommand{\Bf}{\mathbf{B}}
-\newcommand{\If}{\mathbf{I}}
-\newcommand{\nf}{\mathbf{n}}
-\newcommand{\Xo}{\overline{X}}
-\newcommand{\xfb}{\overline{\mathbf{x}}}
-\newcommand{\zfb}{\overline{\mathbf{z}}}
-\newcommand{\wfb}{\overline{\mathbf{w}}}
-\newcommand{\csolt}{\delta^*(p, X)}
-\newcommand{\oup}{\psi^+}
-\newcommand{\uup}{\psi^-}
+\DeclareMathOperator*{\dom}{dom} 
+\newcommand{\FBA}{\text{FBA}}
+\newcommand{\FCA}{\text{FCA}}
+\newcommand{\FVA}{\text{FVA}}
+\newcommand{\DVA}{\text{DVA}}
+\newcommand{\CVA}{\text{CVA}}
+\newcommand{\FBAd}{\text{FBA}^\Delta}
+\newcommand{\FVAd}{\text{FVA}^\Delta}
+\newcommand{\FCAd}{\text{FCA}^\Delta}
+\newcommand{\DVAd}{\text{DVA}^\Delta}
+\newcommand{\CVAd}{\text{CVA}^\Delta}
+\newcommand{\dqdt}{\df \dsQ \otimes \df t-\text{a.s}}
+\newcommand{\dqdj}{\df \dsQ \otimes \df \theta-\text{a.s}}
+\newcommand{\dpdt}{\df \dsP \otimes \df t-\text{a.s}}
 \newcommand{\btau}{\bar{\tau}} 
 \newcommand{\jb}{\bar{\theta}}
-\newcommand{\ito}{It\^o}
-\newcommand{\gratio}{\frac{\gamma^B}{\gamma^A}} 
+\newcommand{\gratio}{\frac{\gamma^C}{\gamma^H}}
 \newcommand{\tb}{\bar{\tau}}
-\newcommand{\frU}{\textfrak{U}}
-\newcommand{\frp}{\textfrak{p}}
-\newcommand{\frP}{\textfrak{P}}
-\newcommand{\calM}{\mathcal{M}}
-\newcommand{\calL}{\mathcal{L}}
-\newcommand{\calK}{\mathcal{K}}
-\newcommand{\CST}{\bm{\Delta}}
-\newcommand{\clco}{\cl(\mathcal{O})}
-\newcommand{\scrA}{\mathscr{A}}
-\newcommand{\scrR}{\mathscr{R}}
-\newcommand{\scrL}{\mathscr{L}}
 \newcommand{\gb}{\bar{g}}
 \newcommand{\yb}{\bar{y}}
+\newcommand{\cadlag}{c\`adl\`ag}
 \newcommand{\fb}{\bar{f}}
-\newcommand{\fc}{\check{f}}
 \newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
 \newcommand{\Vb}{\bar{V}}
-\newcommand{\oP}{\overline{P}}
-\newcommand{\oM}{\overline{M}}
-\newcommand{\oB}{\overline{B}}
 \newcommand{\udld}{\underline{\delta}}
 \newcommand{\ovld}{\overline{\delta}}
 \newcommand{\rb}{\bar{r}}
@@ -107,9 +71,6 @@
 \newcommand{\GQ}{\Gamma^{\dsQ}}
 \newcommand{\dsone}{\mathds{1}}
 \newcommand{\1}{\mathds{1}}
-\newcommand{\dqdt}{\df \dsQ \otimes \df t-\text{a.s}}
-\newcommand{\dqdj}{\df \dsQ \otimes \df \theta-\text{a.s}}
-\newcommand{\dpdt}{\df \dsP \otimes \df t-\text{a.s}}
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\calC}{\mathcal{C}}
@@ -117,15 +78,12 @@
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calB}{\mathcal{B}}
 \newcommand{\calA}{\mathcal{A}}
-\newcommand{\calS}{\mathcal{S}}
-\newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calD}{\mathcal{D}}
 \newcommand{\frD}{\textfrak{D}}
 \newcommand{\frA}{\mathfrak{A}} 
 \newcommand{\frV}{\mathfrak{V}}
-\newcommand{\wf}{\mathbf{w}}
-\newcommand{\tf}{\mathbf{t}}
 \newcommand{\frC}{\mathfrak{C}}
+\newcommand{\frM}{\mathfrak{M}}
 \newcommand{\calV}{\mathcal{V}}
 \newcommand{\calE}{\mathcal{E}}
 \newcommand{\calH}{\mathcal{H}}
@@ -133,9 +91,15 @@
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calO}{\mathcal{O}}
 \newcommand{\calR}{\mathcal{R}}
-\newcommand{\ctm}{\tilde{C}_{t}}
+\newcommand{\calL}{\mathcal{L}}
 \newcommand{\Nt}{\tilde{N}}
-\newcommand{\vt}{\tilde{v}}
+\newcommand{\Bt}{\tilde{B}}
+\newcommand{\St}{\tilde{S}}
+\newcommand{\Sc}{\check{S}}
+\newcommand{\Xc}{\check{X}}
+\newcommand{\cc}{\check{c}}
+\newcommand{\Vc}{\check{V}}
+\newcommand{\pic}{\check{\pi}}
 \newcommand{\nt}{\tilde{\nu}}
 \newcommand{\Lt}{\tilde{L}}
 \newcommand{\ct}{\tilde{C}_{t}}
@@ -148,9 +112,10 @@
 \newcommand{\xih}{\hat{\xi}}
 \newcommand{\Ut}{\tilde{U}}
 \newcommand{\Utt}{\tilde{\tilde{U}}}
-\newcommand{\Vt}{\tilde{V}}
+\newcommand{\Vt}{\tilde{X}_t}
 \newcommand{\Vs}{\tilde{X}_s}
-\newcommand{\pt}{\tilde{P}_t}
+\newcommand{\pt}{\tilde{P}}
+\newcommand{\pc}{\check{p}}
 \newcommand{\yh}{\hat{y}}
 \newcommand{\zh}{\hat{z}}
 \newcommand{\Gh}{\hat{G}}
@@ -159,13 +124,10 @@
 \newcommand{\hh}{\hat{h}}
 \newcommand{\Uh}{\hat{U}}
 \newcommand{\jh}{\hat{j}}
-\newcommand{\pit}{\tilde{P}^i_t}
+\newcommand{\pit}{\tilde{\pi}}
 \newcommand{\eps}{\varepsilon}
-\newcommand{\epst}{\tilde{\varepsilon}}
 \newcommand{\et}{\tilde{e}}
-\newcommand{\mt}{\tilde{m}}
 \newcommand{\dsI}{\mathbb{I}}  
-\newcommand{\dsN}{\mathbb{N}}  
 \newcommand{\dsE}{\mathbb{E}}
 \newcommand{\dsF}{\mathbb{F}}
 \newcommand{\dsH}{\mathbb{H}}
@@ -179,7 +141,8 @@
 \newcommand{\dsD}{\mathbb{D}}
 \newcommand{\tV}{\tilde{X}}
 \newcommand{\tP}{\tilde{P}}
-\newcommand{\Jt}{\tilde{J}_t}
+\newcommand{\Jt}{\tilde{\Theta}}
+\newcommand{\Jh}{\hat{\Theta}}
 \newcommand{\INT}{\int_{t+}^{\btau}}
 \newcommand{\SUM}{\displaystyle\sum}
 \newcommand{\ccs}{U_C\big(\1_{T < \tau}\upsilon + \1_{T\geq \tau}(v_\tau - \Theta_\tau)-B_{\btau}^C p}
@@ -197,6 +160,7 @@
 \newcommand{\bh}{\hat{\beta}}
 \newcommand{\uh}{\hat{u}}
 \newcommand{\xf}{\mathbf{x}}
+\newcommand{\tf}{\mathbf{t}}
 \newcommand{\yf}{\mathbf{y}}
 \newcommand{\zf}{\mathbf{z}}
 \newcommand{\lf}{\mathbf{\lambda}}
@@ -204,149 +168,194 @@
 \newcommand{\RI}{\rho^I}
 \newcommand{\Ub}{\bar{U}}
 \newcommand{\RC}{\rho^C}
-\newcommand{\agrc}{\textit{agreement-cost }}
+\newcommand{\agrc}{\textit{agreement-cost}}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\esssup}{ess\,sup}
-\DeclareMathOperator*{\Tr}{Tr}
-\DeclareMathOperator*{\USC}{USC}
-\DeclareMathOperator*{\LSC}{LSC}
-\DeclareMathOperator*{\cl}{cl}
 %\DeclareMathOperator*{\exp}{exp}
 \DeclareMathOperator*{\essinf}{ess\,inf}
 %\usepackage[linedheaders,parts,pdfspacing]{classicthesis} % ,manychapters
 %\usepackage[bitstream-charter]{mathdesign}
 \usepackage{bbding}
 \usepackage{thmtools}
+    
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section] % reset theorem numbering for each chapter
+\newtheorem{corollary}[thm]{Corollary} 
+\newtheorem{theorem}[thm]{Theorem} 
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{assumption}[thm]{Assumption}
+\newtheorem{definition}[thm]{Definition} 
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{Remark} % definition numbers are dependent on theorem numbers
+\newtheorem{example}[thm]{Example}
+ \iffalse 
+\declaretheoremstyle[
+  style=definition,
+  qed=\openbox,
+]{example}
+\declaretheorem[
+  name=Example,
+  style=example,
+  numberlike=thm,
+  ]{exmp}
+\fi
 \renewcommand\qedsymbol{\RectangleBold}  
+\iffalse
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{plain}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\fi
 \newcommand{\CT}{^{x+p, u, c}}
 \newcommand{\gt}{\tilde{g}}
 \newcommand{\uf}{\mathbf{u}}
 \newcommand{\Ah}{\hat{A}}
 \newcommand*\df{\mathop{}\!\mathrm{d}}
 \newcommand*\Df[1]{\mathop{}\!\mathrm{d^#1}}
-\newcommand{\comJ}[1]{\textcolor[rgb]{1,0., 0.0}{#1}}
-\newcommand{\CJ}[1]{\textcolor[rgb]{1,0., 0.0}{#1}}
-\newcommand{\comB}[1]{\textcolor[rgb]{0,0., 1.0}{#1}}
+\newcommand{\comJ}[1]{(\textcolor[rgb]{1,0., 0.0}{*#1})}
+\newcommand{\CJ}[1]{\textcolor[rgb]{1.0,0., 0.0}{#1}}
 \newcommand{\Rom}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 \newcommand{\rom}[1]{\lowercase\expandafter{\romannumeral #1\relax}}
 \newcommand{\wt}[1]{\widetilde{#1}}
 % in the document body:  
-\newcommand{\RN}[1]{%
+\newcommand{\RN}[1]{%  
   \textup{\uppercase\expandafter{\romannumeral#1}}% 
-}     
- 
-\DeclareMathOperator{\sgn}{sgn} 
-\DeclareMathOperator{\diag}{diag} 
-\DeclareMathOperator{\row}{row}     
-\DeclareMathOperator{\col}{col}
-\usepackage{amsopn}
-
-
-\headers{Lifetime Ruin under HWM Fees and Drift Uncertainty}{J. Lee, X. Yu, and C. Zhou}
-
-\title{A Note on Development \thanks{}  }
-
-\author{Jay\thanks{Department of Sales and Trading, Yuanta Securities
-    Korea, 04538 Seoul, Korea. 
-              Tel. +82-2-3770-5993.
-              \href{junbeoml22@gmail.com}{junbeoml22@gmail.com}}}
-
-% Optional PDF information
-\ifpdf
-\hypersetup{
-  pdftitle={Dev Note}
-  pdfauthor={J. Lee}
 }
-\fi
+\newcommand{\citelist}{}
 
+\newcounter{current-cite}
 
-\begin{document}  
+\newcounter{currentcitetotal}
+\newcommand{\mycite}[1]{
+  \setcounter{currentcitetotal}{0}
+  \renewcommand{\do}[1]{\addtocounter{currentcitetotal}{1}}
+  \docsvlist{#1}
+  \renewcommand{\do}[1]{%
+  \addtocounter{currentcite}{1}%
+  \ifinlist{##1}{\citelist}
+    {\citet{##1}}
+    {\citet*{##1}\listadd{\citelist}{##1}}%
+  \ifnumcomp{\value{currentcitetotal}}{>}{\value{currentcite}}
+    {, }
+    {}%
+  }
+  \docsvlist{#1}
+}
+\renewenvironment{abstract}{\small
+  \begin{center}
+  \bfseries \abstractname\vspace{-.5em}\vspace{0pt}
+  \end{center}
+  \list{}{
+    \setlength{\leftmargin}{0.7cm}% 
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \item\relax}   
+ {\endlist} 
+ \DeclareMathOperator{\sgn}{sgn} 
+ \DeclareMathOperator{\diag}{diag} 
+ \DeclareMathOperator{\row}{row} 
+ \DeclareMathOperator{\col}{col}
+   
+ \title{A Note on Development  \author{이준범 \thanks{ OTC Trading, Yuanta Securities Korea, 04538
+       Seoul, Korea. \\Tel: +82-2-3770-5993. 
+       Email: \href{junbeom.lee@yuantakorea.com}{junbeom.lee@yuantakorea.com}.
+     %
+     %
+     }} 
+   }
+ %\affil{Department of Mathematics\\ National University of Singapore}
 
+\iffalse 
+\author{이준범\footnote{OTC Trading, Yuanta Securities
+    Korea, 04538 Seoul, Korea
+    (\href{junbeom.lee@yuantakorea.com}{junbeom.lee@yuantakorea.com}).
+    }} 
+\fi    
+\date{}
+\providecommand{\keywords}[1]{\textbf{\textit{Key-words: }} #1}
+\providecommand{\AMS}[1]{\textbf{\textit{AMS subject classifications: }} #1}
+\begin{document}
 \maketitle
 
-\begin{abstract}
-\end{abstract}
+\iffalse
+{
+  \hypersetup{linkcolor = blue} 
+  \tableofcontents
+}
+\fi
+\section{Payoff Decomposition}
+\label{sec:back}
 
-% REQUIRED
-\begin{keywords}
-\end{keywords}
+ELS Payoff, denoted by $X$ is like:
+\begin{align}
+  X =& \SUM_{i=1}^N \Big(\prod_{j <i}\1_{S_{T_j} < \calR_j}\Big)\1_{ S_{T_i}
+      \geq  \calR_i}C_i
+      + \SUM_{i=1}^L\Big(\prod_{j <i}\1_{S_{T_j} < \calR_j}\Big)
+      \1_{ S^*_{(T_{i-1} , T_i]} \geq  \calL_i}C^L_i \nonumber \\
+     &+\Big(\prod_{j <N}\1_{S_{T_j} < \calR_j}\Big)\big(\1_{S^*_T <
+       \calB}\phi(S_T)+\1_{S^*_T \geq \calB}C^B\big)  \nonumber \\
+  =& \SUM_{i=1}^N \Big(\prod_{j <i}\1_{S_{T_j} < \calR_j}\Big)\1_{ S_{T_i}
+      \geq  \calR_i}C_i
+      + \SUM_{i=1}^L\Big(\prod_{j <i}\1_{S_{T_j} < \calR_j}\Big)
+      \1_{ S^*_{(T_{i-1} , T_i]} \geq  \calL_i}C^L_i \nonumber \\
+     &+\Big(\prod_{j <N}\1_{S_{T_j} < \calR_j}\Big)\big(\phi(S_T)+\1_{S^*_T \geq
+       \calB}(C^B-\phi(S_T))\big)
+       \nonumber \\
+    =& \SUM_{i=1}^{N-1} \Big(\prod_{j <i}\1_{S_{T_j} < \calR_j}\Big)\1_{ S_{T_i}
+       \geq  \calR_i}C_i+\Big(\prod_{j <N-1}\1_{S_{T_j} < \calR_j}\Big)
+       \big(\1_{S_{T_N} \geq \calR_N}C_N + \1_{S_{T_N} < \calR_N}\phi(S_T)\big)
+        \nonumber \\
+     &+ \SUM_{i=1}^L\Big(\prod_{j <i}\1_{S_{T_j} < \calR_j}\Big)
+       \1_{ S^*_{(T_{i-1} , T_i]} \geq  \calL_i}C^L_i \nonumber\\
+     &+\Big(\prod_{j <N}\1_{S_{T_j} < \calR_j}\Big)\1_{S^*_T \geq \calB}(C^B-\phi(S_T))
+\end{align}
+Hence there should be $L+2$ grids: one for ranges, $L$ for the lizard barriers, one
+for the maturity barrier. 
 
-% REQUIRED
-\begin{AMS}
+\section{OIS schedule}
+\label{sec:ois}
+Let us denote the calculation period pair of fixing, value start,
+value end, payment dates by:
+\begin{align}
+  I_i = \{\phi_i, \sigma_i, \epsilon_i\}.
+\end{align}
+To explain the notation, we usually have $\epsilon_i - \sigma_i = \text{Day(1)}$
+in OIS cases. These periods comprise the swap intervals $\{(S_i, E_i]\}_i$ such
+that:
+\begin{align}
+  (S_N, E_N] \coloneqq (\sigma_{M_i}, \epsilon_{N_i}] = \cup(\sigma_i, \epsilon_i]
+\end{align}
+Then, we have the latest past fixing data $\delta_t$ at $t \geq 0$ and the
+regarding value end date $\epsilon_d$
+\begin{align}
+  t \mapsto \delta_t \mapsto \epsilon_d
+\end{align}
+Let $I = [a, b]$ be a calculation interval, $\phi$ be the fixing interval, and
+$\mu$ be the respective payment date. Note that $\phi$ may or may not be in the
+calculation interval, i.e., either $\phi\in [a, b]$ or $\phi\notin [a, b]$, but
+the payment date cannot be earlier than the end date $b$.  Moreover, let
+$t \geq 0$ denote the evaluation date and $C(t, ., .)$ denote the (zero) curve
+given at $t \geq 0$.
+
+Consider that there are a set of past data $d(\phi_i)$ such that $\phi_i \leq t$:
+\begin{align}
+  \{\phi_1, \phi_2, \dots, \phi_N\}.
+\end{align}
+Let us denote by $\varepsilon_N$ the calculation end date regarding the last fixing date.
+
+
+
+\end{document} 
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
  
-\end{AMS}
-
- 
-\section{Payoff}
-\begin{proposition}
- Let $X=(X^1, X^2, \dots, X^d)$ be a $d$-dimensional semi-martingale, $\Xo$ be
- the continuous part of $X$, and $F$ be
- a twice continuously differentiable function. Then we have (formally)
- \begin{align}
-   \df F(t, X_t) =& \partial_t F(t, X_t) + \SUM_{i=1}^d\partial_{x^i} F(t, X_t) \df \Xo^i_t  +
-                    \SUM_{i, j=1}^d\frac{1}{2}\partial_{x^i}\partial_{x^j} F(t, X_t) \df
-                    [\Xo^i_t, \Xo^j_t ] \nonumber \\
-                  &+(F(t, X_{t}) - F(t, X_{t-})). \label{ito}
- \end{align}
-\end{proposition}
-
-\section{Range Accrual Type Notes}
-Consider a certain interest rate denoted by $(F_t)_{t\geq0}$.
-Let $(A_t)_{t\geq0}$ denote the process to count the number of days that the
-interest rate is in a range $\calR$. In other words, we can
-write
-\begin{align}
-  A_t = \SUM_{k=1}^N \1_{t_k \leq t}\1_{F_{t_k} \in \calR}, \label{counting.process}
-\end{align}
-where $t_k$ represents each day. Then, we can formally have
-\begin{align}
-\df  A_t = \SUM_{k=1}^N  \1_{F_{t_k} \in \calR}\bm{\delta}_{t_k}(\df t).
-\end{align}
-For simplicity, consider  one factor short rate process $(r_t)_{t\geq0}$  that follows
-\begin{align}
-  \df r_t = \mu(t, r_t)\df t + \sigma(t, r_t)\df W_t.
-\end{align}
-Let $\{V(t, r_t, A_t)\}_{0\leq t\leq T}$ be the value of a range accrual type
-note. Moreover, we denote
-\begin{align}
-  B_t \coloneqq& \exp\bigg(\int_{0}^{t}r_s\df s\bigg), \nonumber \\
-  \Vt(t, r_t, A_t) \coloneqq&  B_t^{-1}V(t, r_t, A_t).\nonumber 
-\end{align}
-Then by applying It\^o's formula to $\Vt$, we have
-\begin{align}
-  \df\Vt(t, r_t, A_t) =
-  & B_t^{-1}\Big[-r_tV(t, r_t, A_t) +\partial_tV(t, r_t, A_t)\nonumber \\
-  &\quad +\partial_rV(t, r_t, A_t)\mu(t, r_t) +\frac{\sigma^2(t, r_t)}{2}\partial^2_rV(t, r_t, A_t)\Big]
-    \df t \nonumber\\
-    &+\SUM_{k=1}^N (\Vt(t, r_t, A_t) - \Vt(t, r_t, A_{t-}))\1_{F_{t_k} \in \calR}
-      \bm{\delta}_{t_k}(\df t)\nonumber \\
-  &+B^{-1}_t\sigma(t, r_t) \partial_rV(t, r_t, A_t)\df W_t. \label{eq1}
-\end{align}
-Note that $(A_t)_{t\geq0}$ jumps only at $t = t_k$, $k=1, \dots, N$,  and
-\begin{align}
-  \Delta_{t_k}A  = A_{t_k}-A_{t_k-1} =
-  \begin{cases}
-    1 ~~~ \text{where } F_{t_k} \in \calR, \\
-    0 ~~~ \text{otherwise}.
-  \end{cases}
-\end{align}
-Therefore, where $F_{t_k} \in \calR$, we have $A_{t_{k}} =
-A_{t_{k-1}}+1$. Moreover, we assume $F_t$ can be represented by $(t, r_t)$ and
-denote the range for $(t, r_t)$ by $\scrR$. In other words,
-\begin{align}
-  F_{t}\in \calR \Leftrightarrow (t, r_{t}) \in \scrR.
-\end{align}
-Then, by \cref{eq1}, so that $\Vt$ is a martingale, it suffices to find a
-function $V(t, r, A)$ that satisfies
-\begin{align}
-\begin{cases}
- \partial_tV(t, r, A)  +\partial_rV(t, r, A)\mu(t, r)
- +\frac{\sigma^2(t, r)}{2}\partial^2_rV(t, r, A)=rV(t, r, A), \\
- V(t, r, A+1) = V(t, r, A), ~~~\text{where } (t, r) \in \scrR.
-\end{cases}
-\end{align}
-\bibliographystyle{siamplain}
-\bibliography{range.accrual}
-\end{document}
-   
