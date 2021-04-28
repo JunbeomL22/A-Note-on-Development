@@ -262,7 +262,7 @@
  \DeclareMathOperator{\diag}{diag} 
  \DeclareMathOperator{\row}{row} 
  \DeclareMathOperator{\col}{col}
-   
+    
  \title{A Note on Development  \author{이준범 \thanks{ OTC Trading, Yuanta Securities Korea, 04538
        Seoul, Korea. \\Tel: +82-2-3770-5993. 
        Email: \href{junbeom.lee@yuantakorea.com}{junbeom.lee@yuantakorea.com}.
@@ -319,7 +319,7 @@ ELS Payoff, denoted by $X$ is like:
 Hence there should be $L+2$ grids: one for ranges, $L$ for the lizard barriers, one
 for the maturity barrier. 
 
-\section{OIS schedule}
+\section{OIS Schedule}
 \label{sec:ois}
 Let us denote the calculation period pair of fixing, value start,
 value end, payment dates by:
@@ -327,31 +327,61 @@ value end, payment dates by:
   I_i = \{\phi_i, \sigma_i, \epsilon_i\}.
 \end{align}
 To explain the notation, we usually have $\epsilon_i - \sigma_i = \text{Day(1)}$
-in OIS cases. These periods comprise the swap intervals $\{(S_i, E_i]\}_i$ such
-that:
+in overnight index cases. These periods comprise the swap intervals
+$\{\{S_i, E_i, \Pi_i\}\}_i$ such that:
 \begin{align}
-  (S_N, E_N] \coloneqq (\sigma_{M_i}, \epsilon_{N_i}] = \cup(\sigma_i, \epsilon_i]
+  (S_i, E_i] \coloneqq (\sigma_{M_i}, \epsilon_{N_i}] = \cup(\sigma_k, \epsilon_k],
 \end{align}
-Then, we have the latest past fixing data $\delta_t$ at $t \geq 0$ and the
-regarding value end date $\epsilon_d$
+and $\Pi_i$ represents the regarding payment date. 
+Then, for a given evaluation date $t \geq 0$, find the earlist payment date and
+its valu end date:
 \begin{align}
-  t \mapsto \delta_t \mapsto \epsilon_d
+  t \mapsto \Pi_{i(t)} \mapsto E_{i(t)}.
 \end{align}
-Let $I = [a, b]$ be a calculation interval, $\phi$ be the fixing interval, and
-$\mu$ be the respective payment date. Note that $\phi$ may or may not be in the
-calculation interval, i.e., either $\phi\in [a, b]$ or $\phi\notin [a, b]$, but
-the payment date cannot be earlier than the end date $b$.  Moreover, let
-$t \geq 0$ denote the evaluation date and $C(t, ., .)$ denote the (zero) curve
-given at $t \geq 0$.
-
-Consider that there are a set of past data $d(\phi_i)$ such that $\phi_i \leq t$:
+The next step is to find the latest end date of the past data earlier than
+$E_{i(t)}$:
 \begin{align}
-  \{\phi_1, \phi_2, \dots, \phi_N\}.
+  E_{i(t)} \geq \epsilon^*_{i(t)}
+  \coloneqq \{\epsilon_i \mid (\phi_i, \sigma_i, \epsilon_i) \text{ of the past data}\}.
 \end{align}
-Let us denote by $\varepsilon_N$ the calculation end date regarding the last fixing date.
+In addition, find the earlist value start date (of the fixing data) and fixing
+date:
+\begin{align}
+  S_{i(t)} \mapsto (\phi^*_{i(t)}, \sigma_{i(t)}^*) 
+\end{align}
+Then, the calculation starts from:
+\begin{align}
+  \sigma_{i(t)}^* \wedge S_{i(t)}.
+\end{align}
+For the forcasting, we obtain:
+\begin{align}
+  [1+C(0, 0, E_{i(t)}) (E_{i(t)} -\epsilon^*_{i(t)})]
+\end{align}
+For any case that the next value start date $S_{i(t)+1}$ needs a past data, we
+calculate:
+\begin{align}
+  C(t, S_i \vee 0, E_i) (E_{i} -S_{i})
+\end{align}
 
-
-
+\section{Local Volatility}
+Note that (S)SVI models represents the total variance with respect to:
+\begin{align}
+y = \ln\bigg(\frac{K}{F}\bigg).
+\end{align}
+In other words:
+\begin{align}
+  w(y) = \sigma^2(T, Fe^k)T. 
+\end{align}
+Recall the Dupire formula:
+\begin{align}
+  v_L = \frac{\partial_T w}{1-\frac{y}{w}\partial_y w
+  +\frac{1}{4}\Big(-\frac{1}{4} - \frac{1}{w} +
+  \frac{y^2}{w^2}\Big)(\partial_y w)^2 + \frac{1}{2}\partial^2_y w}.
+\end{align}
+Hence, note that:
+\begin{align}
+ \sigma^{BS}_L(T, Fe^y) = \sqrt{v_L(y)}.
+\end{align}
 \end{document} 
 %%% Local Variables:
 %%% mode: latex
