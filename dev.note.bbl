@@ -1,0 +1,26 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Bergomi%
+}{%
+Bergomi%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+bergomi2015stochastic}
+\APACinsertmetastar {%
+bergomi2015stochastic}%
+\begin{APACrefauthors}%
+Bergomi, L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2015}.
+\newblock
+\APACrefbtitle {Stochastic volatility modeling} {Stochastic volatility
+  modeling}.
+\newblock
+\APACaddressPublisher{}{CRC press}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

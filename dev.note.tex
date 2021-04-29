@@ -364,6 +364,8 @@ calculate:
 \end{align}
 
 \section{Local Volatility}
+
+\subsection{No Dividends}
 Note that (S)SVI models represents the total variance with respect to:
 \begin{align}
 y = \ln\big(\frac{K}{F}\big).
@@ -376,17 +378,46 @@ Recall the Dupire formula:
 \begin{align}
   v_L = \frac{\partial_T w}{1-\frac{y}{w}\partial_y w
   +\frac{1}{4}\Big(-\frac{1}{4} - \frac{1}{w} +
-  \frac{y^2}{w^2}\Big)(\partial_y w)^2 + \frac{1}{2}\partial^2_y w}.
+  \frac{y^2}{w^2}\Big)(\partial_y w)^2 + \frac{1}{2}\partial^2_y w}. \label{dupire}
 \end{align}
-Hence, recall that $\sigma^{BS}_L(T, Fe^y) = \sqrt{v_L(y)}$, in other words:
+Hence, recall that $\sigma_{BS}(T, Fe^y) = \sqrt{v_L(y)}$, in other words:
 \begin{align}
- \sigma^{BS}_L(T, K) = \sqrt{v_L\bigg(\ln\big(\frac{K}{F}\big)\bigg)}.
+ \sigma_{BS}(T, K) = \sqrt{v_L\bigg[\ln\big(\frac{K}{F}\big)\bigg]}.
 \end{align}
 For any $T <  T_1$ and $T >  T_N$, the possible extrapolation may be:
 \begin{align}
-  \sigma^{BS}_L\bigg(T_1, ~K\frac{F_1}{F}\bigg) ~\text{ and }~ \sigma^{BS}_L\bigg(T_N, ~K\frac{F_N}{F}\bigg)
+  \sigma_{BS}\bigg(T_1, ~K\frac{F_1}{F}\bigg) ~\text{ and }~ \sigma_{BS}\bigg(T_N, ~K\frac{F_N}{F}\bigg)
 \end{align}
 
+\subsection{Discrete Dividends}
+This recipe is borrowed from the section 2.3.1.2 in 
+\cite{bergomi2015stochastic}.
+\begin{align}
+  \delta S(t)\coloneqq& \SUM_{t_i <t}q_i\frac{t-t_i}{t}B_{t_i}^{-1}\nonumber\\
+  \delta K(t)\coloneqq& \SUM_{t_i <t}q_i\frac{t_i}{t}B_{t_i}^{-1}B_t \nonumber\\
+  y\coloneqq& \ln\bigg(\frac{K+\Delta K(t)}{(S_0 - \delta S(t))B_t}\bigg)\nonumber\\
+  w(t, y)\coloneqq& \sigma_{L}^2(t, K)t.\nonumber 
+\end{align}
+Then, \cref{dupire} implies directly, but:
+\begin{align}
+  \sigma_{BS}(t, K) = \sqrt{v_L\bigg[\ln\bigg(\frac{K+\Delta K(t)}{(S_0 - \delta S(t))B_t}\bigg)\bigg]}
+\end{align}
+Moreover, the extrapolation accross time is:
+\begin{align}
+  \sigma_{BS}\bigg(t_1, ~e^{-y+y_1} \bigg) ~\text{ and }~ \sigma_{BS}\bigg(t_N, ~e^{-y+y_N}\bigg)
+\end{align}
+\subsection{Referencing the Intial Price}
+Recall that the SDE of local volatility model follows:
+\begin{align}
+  \df S_t = r_tS_t\df t + \sigma_{BS}(t, S_t)S_t\df W_t - \df \frD_t
+\end{align}
+Let $X_t = S_t / S^*$ where $S^*$ represents the reference price on the
+effective date. Then, we have:
+\begin{align}
+  \df X_t =& r_tX_t\df t + \sigma_{BS}(t, X_tS^*)X_t\df W_t - \frac{1}{S^*}\df
+             \frD_t \nonumber \\
+  =& r_tX_t\df t + \sigma_{BS}(t, X_tS^*)X_t\df W_t - \SUM \frac{q_i}{S^*}\bm{\delta}_{t_i}(\df t)
+\end{align}
 \section{Log BS with Discrete Dividends}
 Let $(S_t)_{t \geq 0}$ follow:
 \begin{align}
@@ -415,7 +446,7 @@ Therefore:
                                 t}}{e^{X_t}}\Big) \nonumber\\
   \sigma_t = &v_L\bigg(t, X_t+\ln\big(\frac{S^*}{F^t_0}\big)\bigg)^{\frac{1}{2}} \nonumber
 \end{align}
-
+\bibliography{dev.note}
 \end{document} 
 %%% Local Variables:
 %%% mode: latex
