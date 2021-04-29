@@ -386,6 +386,36 @@ For any $T <  T_1$ and $T >  T_N$, the possible extrapolation may be:
 \begin{align}
   \sigma^{BS}_L\bigg(T_1, ~K\frac{F_1}{F}\bigg) ~\text{ and }~ \sigma^{BS}_L\bigg(T_N, ~K\frac{F_N}{F}\bigg)
 \end{align}
+
+\section{Log BS with Discrete Dividends}
+Let $(S_t)_{t \geq 0}$ follow:
+\begin{align}
+  \df S_t =& r_tS_t \df t +  v_L\bigg(t,
+             \ln\big(\frac{S_t}{F^t_0}\big)\bigg)^{\frac{1}{2}} S_t \df W_t
+             - \df \frD_t \nonumber\\
+  \frD_t =& \SUM_{i \leq N}q_i \1_{T_i \leq t}. \nonumber
+\end{align}
+We formally have:
+\begin{align}
+  \df \frD_t = \SUM_{i \leq N} q_i \bm{\delta}_{T_i}(\df t).
+\end{align}
+Let $X = \ln (S / S^*)$. Then:
+\begin{align}
+  \df X_t =  \big(r_t - \frac{\sigma_t^2}{2}\big) \df t
+  +v_L\bigg(t, X_t+\ln\big(\frac{S^*}{F^t_0}\big)\bigg)^{\frac{1}{2}} \df W_t
+  +\bm{\delta}_{T_i}(\df t)\big(\ln(e^{X_{t-}}-\frac{q_i}{S^*}) - \ln(e^{X_{t-}})\big) 
+\end{align}
+Therefore:
+\begin{align}
+  X_{t+\Delta t} - X_t \approx&
+   \big(r_t -
+  \frac{\sigma_t^2}{2}\big) \Delta t
+  +\sigma_t \Delta W_t
+  + \ln\Big(\frac{e^{X_t} - \SUM \frac{q_i}{S^*} \1_{t < T_i \leq t + \Delta
+                                t}}{e^{X_t}}\Big) \nonumber\\
+  \sigma_t = &v_L\bigg(t, X_t+\ln\big(\frac{S^*}{F^t_0}\big)\bigg)^{\frac{1}{2}} \nonumber
+\end{align}
+
 \end{document} 
 %%% Local Variables:
 %%% mode: latex
